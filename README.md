@@ -2,7 +2,7 @@
 
 ####Available Data Structures
 - Stack
-  - __void__ push( __[$elements = array()]__ )
-  - __array__ pop( __[$count = 1]__ )
-  - __array__ elements()
-  - __int__ size()
+  - _void_ push( _[$elements = array()]_ )
+  - _array_ pop( _[$count = 1]_ )
+  - _array_ elements()
+  - _int_ size()
