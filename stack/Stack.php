@@ -20,7 +20,7 @@
       while ($count-- > 0 && !empty($this->stack)) {
         $elements[] = array_pop($this->stack);
       }
-      return normalized_element($elements);
+      return $this->normalized_element($elements);
     }
 
     public function top($count = 1) {
@@ -28,7 +28,7 @@
       for ($i = 1; $i <= $count && $i < count($this->stack); $i++) {
         $elements[] = $this->stack[count($this->stack) - $i];
       }
-      return normalized_element($elements);
+      return $this->normalized_element($elements);
     }
 
     public function elements() {
