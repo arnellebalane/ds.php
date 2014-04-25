@@ -17,7 +17,7 @@
 
     public function pop($count = 1) {
       $elements = array();
-      while ($count-- > 0 && !empty($this->stack)) {
+      for ($i = 0; $i < $count && !empty($this->stack); $i++) {
         $elements[] = array_pop($this->stack);
       }
       return $this->normalized_element($elements);
@@ -25,7 +25,7 @@
 
     public function top($count = 1) {
       $elements = array();
-      for ($i = 1; $i <= $count && $i < count($this->stack); $i++) {
+      for ($i = 1; $i <= $count && $i <= count($this->stack); $i++) {
         $elements[] = $this->stack[count($this->stack) - $i];
       }
       return $this->normalized_element($elements);
