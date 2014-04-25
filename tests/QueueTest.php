@@ -43,7 +43,7 @@
       $this->assertEquals(array(5), $queue->elements());
 
       $elements = $queue->dequeue(3);
-      $this->assertEquals(array(5), $elements);
+      $this->assertEquals(5, $elements);
       $this->assertEquals(array(), $queue->elements());
 
       $elements = $queue->dequeue();
