@@ -1,6 +1,6 @@
 <?php
 
-  require_once '../queue/Queue.php';
+  require_once 'Queue.php';
 
   class QueueTest extends PHPUnit_Framework_TestCase {
 

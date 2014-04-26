@@ -1,6 +1,6 @@
 <?php
 
-  require_once '../stack/Stack.php';
+  require_once 'Stack.php';
 
   class StackTest extends PHPUnit_Framework_TestCase {
 
