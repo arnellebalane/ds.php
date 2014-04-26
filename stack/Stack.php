@@ -25,8 +25,8 @@
 
     public function top($count = 1) {
       $elements = array();
-      for ($i = 1; $i <= $count && $i <= count($this->stack); $i++) {
-        $elements[] = $this->stack[count($this->stack) - $i];
+      for ($i = 1; $i <= $count && $i <= $this->size(); $i++) {
+        $elements[] = $this->stack[$this->size() - $i];
       }
       return $this->normalized_element($elements);
     }
