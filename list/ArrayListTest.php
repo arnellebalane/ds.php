@@ -71,11 +71,8 @@
       $this->assertTrue($list->insertAt(2, 3));
       $this->assertEquals(array(2, 1, 3), $list->elements());
 
-      $this->assertTrue($list->insertAt(5, 4));
-      $this->assertEquals(array(2, 1, 3, 4), $list->elements());
-
-      $this->assertTrue($list->insertAt(2, 5));
-      $this->assertEquals(array(2, 1, 5, 3, 4), $list->elements());
+      $this->assertTrue($list->insertAt(2, 4));
+      $this->assertEquals(array(2, 1, 4, 3), $list->elements());
     }
 
     public function testRemoveFirst() {
@@ -83,7 +80,7 @@
 
       $elements = $list->removeFirst();
       $this->assertEquals(1, $elements);
-      $this->assertEquals(array(2, 3, 4), $list->elements());
+      $this->assertEquals(array(2, 3, 4, 5), $list->elements());
 
       $elements = $list->removeFirst(3);
       $this->assertEquals(array(2, 3, 4), $elements);
@@ -123,27 +120,27 @@
 
       $element = $list->removeAt();
       $this->assertEquals(null, $element);
-      $this->assertEquals(array(1, 2, 3, 4, 5), $list->element());
+      $this->assertEquals(array(1, 2, 3, 4, 5), $list->elements());
 
       $element = $list->removeAt(-1);
       $this->assertEquals(null, $element);
-      $this->assertEquals(array(1, 2, 3, 4, 5), $list->element());
+      $this->assertEquals(array(1, 2, 3, 4, 5), $list->elements());
 
       $element = $list->removeAt(5);
       $this->assertEquals(null, $element);
-      $this->assertEquals(array(1, 2, 3, 4, 5), $list->element());
+      $this->assertEquals(array(1, 2, 3, 4, 5), $list->elements());
 
       $element = $list->removeAt(0);
       $this->assertEquals(1, $element);
-      $this->assertEquals(array(2, 3, 4, 5), $list->element());
+      $this->assertEquals(array(2, 3, 4, 5), $list->elements());
 
       $element = $list->removeAt(3);
       $this->assertEquals(5, $element);
-      $this->assertEquals(array(2, 3, 4), $list->element());
+      $this->assertEquals(array(2, 3, 4), $list->elements());
 
       $element = $list->removeAt(1);
       $this->assertEquals(3, $element);
-      $this->assertEquals(array(2, 3), $list->element());
+      $this->assertEquals(array(2, 4), $list->elements());
     }
 
     public function testGetFirst() {
@@ -180,7 +177,7 @@
 
       $elements = $list->getLast(4);
       $this->assertEquals(array(3, 2, 1), $elements);
-      $this->assertEquals(array(1, 2, 3), $list->elementss());
+      $this->assertEquals(array(1, 2, 3), $list->elements());
 
       $list = new ArrayList();
       $elements = $list->getLast();
