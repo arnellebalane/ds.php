@@ -25,7 +25,7 @@
 
     public function first($count = 1) {
       $elements = array();
-      for ($i = 0; $i < $count && $i < count($this->queue); $i++) {
+      for ($i = 0; $i < $count && $i < $this->size(); $i++) {
         $elements[] = $this->queue[$i];
       }
       return $this->normalized_element($elements);
@@ -33,8 +33,8 @@
 
     public function last($count = 1) {
       $elements = array();
-      for ($i = 1; $i <= $count && $i <= count($this->queue); $i++) {
-        $elements[] = $this->queue[count($this->queue) - $i];
+      for ($i = 1; $i <= $count && $i <= $this->size(); $i++) {
+        $elements[] = $this->queue[$this->size() - $i];
       }
       return $this->normalized_element($elements);
     }
