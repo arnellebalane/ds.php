@@ -10,9 +10,13 @@
 
     public function enqueue($elements = array()) {
       $elements = $this->normalized_array($elements);
-      foreach ($elements as $element) {
-        $this->queue[] = $element;
+      if (!empty($elements)) {
+        foreach ($elements as $element) {
+          $this->queue[] = $element;
+        }
+        return true;
       }
+      return false;
     }
 
     public function dequeue($count = 1) {

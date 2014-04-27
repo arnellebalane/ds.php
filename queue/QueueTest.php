@@ -21,13 +21,13 @@
     public function testEnqueue() {
       $queue = new Queue();
 
-      $queue->enqueue();
+      $this->assertFalse($queue->enqueue());
       $this->assertEquals(array(), $queue->elements());
 
-      $queue->enqueue(1);
+      $this->assertTrue($queue->enqueue(1));
       $this->assertEquals(array(1), $queue->elements());
 
-      $queue->enqueue(array(2, 3));
+      $this->assertTrue($queue->enqueue(array(2, 3)));
       $this->assertEquals(array(1, 2, 3), $queue->elements());
     }
 

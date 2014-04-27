@@ -10,9 +10,13 @@
 
     public function push($elements = array()) {
       $elements = $this->normalized_array($elements);
-      foreach ($elements as $element) {
-        $this->stack[] = $element;
+      if (!empty($elements)) {
+        foreach ($elements as $element) {
+          $this->stack[] = $element;
+        }
+        return true;
       }
+      return false;
     }
 
     public function pop($count = 1) {
