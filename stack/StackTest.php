@@ -24,13 +24,13 @@
     public function test_push() {
       $stack = new Stack();
 
-      $this->assertFalse($stack->push());
+      $stack->push();
       $this->assertEquals(array(), $stack->elements());
 
-      $this->assertTrue($stack->push(1));
+      $stack->push(1);
       $this->assertEquals(array(1), $stack->elements());
 
-      $this->assertTrue($stack->push(array(2, 3)));
+      $stack->push(array(2, 3));
       $this->assertEquals(array(1, 2, 3), $stack->elements());
     }
 

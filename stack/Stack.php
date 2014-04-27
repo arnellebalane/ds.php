@@ -10,13 +10,7 @@
 
     public function push($elements = null) {
       $elements = $this->normalized_array($elements);
-      if (!empty($elements)) {
-        foreach ($elements as $element) {
-          $this->stack[] = $element;
-        }
-        return true;
-      }
-      return false;
+      $this->stack = array_merge($this->stack, $elements);
     }
 
     public function pop($count = 1) {
@@ -28,10 +22,8 @@
     }
 
     public function top($count = 1) {
-      $elements = array();
-      for ($i = 1; $i <= $count && $i <= $this->size(); $i++) {
-        $elements[] = $this->stack[$this->size() - $i];
-      }
+      $elements = array_reverse($this->stack);
+      $elements = array_slice($elements, 0, $count);
       return $this->normalized_element($elements);
     }
 
