@@ -4,21 +4,24 @@
 
   class StackTest extends PHPUnit_Framework_TestCase {
 
-    public function testStackProperties() {
+    public function test_stack_properties() {
       $stack = new Stack();
       $this->assertEquals(array(), $stack->elements());
       $this->assertEquals(0, $stack->size());
+      $this->assertEquals('[]', $stack);
 
       $stack = new Stack(1);
       $this->assertEquals(array(1), $stack->elements());
       $this->assertEquals(1, $stack->size());
+      $this->assertEquals('[1]', $stack);
 
       $stack = new Stack(array(1, 2, 3));
       $this->assertEquals(array(1, 2, 3), $stack->elements());
       $this->assertEquals(3, $stack->size());
+      $this->assertEquals('[1, 2, 3]', $stack);
     }
 
-    public function testPush() {
+    public function test_push() {
       $stack = new Stack();
 
       $this->assertFalse($stack->push());
@@ -31,7 +34,7 @@
       $this->assertEquals(array(1, 2, 3), $stack->elements());
     }
 
-    public function testPop() {
+    public function test_pop() {
       $stack = new Stack(array(1, 2, 3, 4, 5));
 
       $elements = $stack->pop();
@@ -51,7 +54,7 @@
       $this->assertEquals(array(), $stack->elements());
     }
 
-    public function testTop() {
+    public function test_top() {
       $stack = new Stack(array(1, 2, 3));
 
       $elements = $stack->top();
@@ -70,17 +73,6 @@
       $elements = $stack->top();
       $this->assertEquals(null, $elements);
       $this->assertEquals(array(), $stack->elements());
-    }
-
-    public function testToString() {
-      $stack = new Stack();
-      $this->assertEquals('[]', $stack);
-
-      $stack = new Stack(1);
-      $this->assertEquals('[1]', $stack);
-
-      $stack = new Stack(array(1, 2, 3));
-      $this->assertEquals('[1, 2, 3]', $stack);
     }
 
   }
