@@ -4,7 +4,7 @@
 
   class ArrayListTest extends PHPUnit_Framework_TestCase {
 
-    public function testArrayListProperties() {
+    public function test_arraylist_properties() {
       $list = new ArrayList();
       $this->assertEquals(array(), $list->elements());
       $this->assertEquals(0, $list->size());
@@ -21,33 +21,33 @@
       $this->assertEquals('[1, 2, 3]', $list);
     }
 
-    public function testInsertFirst() {
+    public function test_insert_first() {
       $list = new ArrayList();
 
-      $this->assertFalse($list->insertFirst());
+      $list->insertFirst();
       $this->assertEquals(array(), $list->elements());
 
-      $this->assertTrue($list->insertFirst(1));
+      $list->insertFirst(1);
       $this->assertEquals(array(1), $list->elements());
 
-      $this->assertTrue($list->insertFirst(array(2, 3)));
+      $list->insertFirst(array(2, 3));
       $this->assertEquals(array(3, 2, 1), $list->elements());
     }
 
-    public function testInsertLast() {
+    public function test_insert_last() {
       $list = new ArrayList();
 
-      $this->assertFalse($list->insertLast());
+      $list->insertLast();
       $this->assertEquals(array(), $list->elements());
 
-      $this->assertTrue($list->insertLast(1));
+      $list->insertLast(1);
       $this->assertEquals(array(1), $list->elements());
 
-      $this->assertTrue($list->insertLast(array(2, 3)));
+      $list->insertLast(array(2, 3));
       $this->assertEquals(array(1, 2, 3), $list->elements());
     }
 
-    public function testInsertAt() {
+    public function test_insert_at() {
       $list = new ArrayList();
 
       $this->assertFalse($list->insertAt());
@@ -75,7 +75,7 @@
       $this->assertEquals(array(2, 1, 4, 3), $list->elements());
     }
 
-    public function testRemoveFirst() {
+    public function test_remove_first() {
       $list = new ArrayList(array(1, 2, 3, 4, 5));
 
       $elements = $list->removeFirst();
@@ -95,7 +95,7 @@
       $this->assertEquals(array(), $list->elements());
     }
 
-    public function testRemoveLast() {
+    public function test_remove_last() {
       $list = new ArrayList(array(1, 2, 3, 4, 5));
 
       $elements = $list->removeLast();
@@ -115,7 +115,7 @@
       $this->assertEquals(array(), $list->elements());
     }
 
-    public function testRemoveAt() {
+    public function test_remove_at() {
       $list = new ArrayList(array(1, 2, 3, 4, 5));
 
       $element = $list->removeAt();
@@ -143,7 +143,7 @@
       $this->assertEquals(array(2, 4), $list->elements());
     }
 
-    public function testGetFirst() {
+    public function test_get_first() {
       $list = new ArrayList(array(1, 2, 3));
 
       $elements = $list->getFirst();
@@ -164,7 +164,7 @@
       $this->assertEquals(array(), $list->elements());
     }
 
-    public function testGetLast() {
+    public function test_get_last() {
       $list = new ArrayList(array(1, 2, 3));
 
       $elements = $list->getLast();
@@ -185,7 +185,7 @@
       $this->assertEquals(array(), $list->elements());
     }
 
-    public function testGetAt() {
+    public function test_get_at() {
       $list = new ArrayList(array(1, 2, 3));
 
       $element = $list->getAt();

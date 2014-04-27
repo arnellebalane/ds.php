@@ -10,24 +10,13 @@
 
     public function insertFirst($elements = array()) {
       $elements = $this->normalized_array($elements);
-      if (!empty($elements)) {
-        foreach ($elements as $element) {
-          array_unshift($this->list, $element);
-        }
-        return true;
-      }
-      return false;
+      $elements = array_reverse($elements);
+      $this->list = array_merge($elements, $this->list);
     }
 
     public function insertLast($elements = array()) {
       $elements = $this->normalized_array($elements);
-      if (!empty($elements)) {
-        foreach ($elements as $element) {
-          $this->list[] = $element;
-        }
-        return true;
-      }
-      return false;
+      $this->list = array_merge($this->list, $elements);
     }
 
     public function insertAt($index = null, $element = null) {
@@ -68,18 +57,13 @@
     }
 
     public function getFirst($count = 1) {
-      $elements = array();
-      for ($i = 0; $i < $count && $i < $this->size(); $i++) {
-        $elements[] = $this->list[$i];
-      }
+      $elements = array_slice($this->list, 0, $count);
       return $this->normalized_element($elements);
     }
 
     public function getLast($count = 1) {
-      $elements = array();
-      for ($i = 1; $i <= $count && $i <= $this->size(); $i++) {
-        $elements[] = $this->list[$this->size() - $i];
-      }
+      $elements = array_reverse($this->list);
+      $elements = array_slice($elements, 0, $count);
       return $this->normalized_element($elements);
     }
 
