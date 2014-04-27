@@ -4,21 +4,24 @@
 
   class QueueTest extends PHPUnit_Framework_TestCase {
 
-    public function testQueueProperties() {
+    public function test_queue_properties() {
       $queue = new Queue();
       $this->assertEquals(array(), $queue->elements());
       $this->assertEquals(0, $queue->size());
+      $this->assertEquals('[]', $queue);
 
       $queue = new Queue(1);
       $this->assertEquals(array(1), $queue->elements());
       $this->assertEquals(1, $queue->size());
+      $this->assertEquals('[1]', $queue);
 
       $queue = new Queue(array(1, 2, 3));
       $this->assertEquals(array(1, 2, 3), $queue->elements());
       $this->assertEquals(3, $queue->size());
+      $this->assertEquals('[1, 2, 3]', $queue);
     }
 
-    public function testEnqueue() {
+    public function test_enqueue() {
       $queue = new Queue();
 
       $this->assertFalse($queue->enqueue());
@@ -31,7 +34,7 @@
       $this->assertEquals(array(1, 2, 3), $queue->elements());
     }
 
-    public function testDequeue() {
+    public function test_dequeue() {
       $queue = new Queue(array(1, 2, 3, 4, 5));
 
       $elements = $queue->dequeue();
@@ -51,7 +54,7 @@
       $this->assertEquals(array(), $queue->elements());
     }
 
-    public function testFirst() {
+    public function test_first() {
       $queue = new Queue(array(1, 2, 3));
 
       $elements = $queue->first();
@@ -72,7 +75,7 @@
       $this->assertEquals(array(), $queue->elements());
     }
 
-    public function testLast() {
+    public function test_last() {
       $queue = new Queue(array(1, 2, 3));
 
       $elements = $queue->last();
@@ -91,17 +94,6 @@
       $elements = $queue->last();
       $this->assertEquals(null, $elements);
       $this->assertEquals(array(), $queue->elements());
-    }
-
-    public function testToString() {
-      $queue = new Queue();
-      $this->assertEquals('[]', $queue);
-
-      $queue = new Queue(1);
-      $this->assertEquals('[1]', $queue);
-
-      $queue = new Queue(array(1, 2, 3));
-      $this->assertEquals('[1, 2, 3]', $queue);
     }
 
   }  
