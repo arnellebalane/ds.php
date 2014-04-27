@@ -10,13 +10,7 @@
 
     public function enqueue($elements = null) {
       $elements = $this->normalized_array($elements);
-      if (!empty($elements)) {
-        foreach ($elements as $element) {
-          $this->queue[] = $element;
-        }
-        return true;
-      }
-      return false;
+      $this->queue = array_merge($this->queue, $elements);
     }
 
     public function dequeue($count = 1) {
@@ -28,18 +22,13 @@
     }
 
     public function first($count = 1) {
-      $elements = array();
-      for ($i = 0; $i < $count && $i < $this->size(); $i++) {
-        $elements[] = $this->queue[$i];
-      }
+      $elements = array_slice($this->queue, 0, $count);
       return $this->normalized_element($elements);
     }
 
     public function last($count = 1) {
-      $elements = array();
-      for ($i = 1; $i <= $count && $i <= $this->size(); $i++) {
-        $elements[] = $this->queue[$this->size() - $i];
-      }
+      $elements = array_reverse($this->queue);
+      $elements = array_slice($elements, 0, $count);
       return $this->normalized_element($elements);
     }
 
