@@ -4,11 +4,11 @@
 
     private $stack;
 
-    public function __construct($elements = array()) {
+    public function __construct($elements = null) {
       $this->stack = $this->normalized_array($elements);
     }
 
-    public function push($elements = array()) {
+    public function push($elements = null) {
       $elements = $this->normalized_array($elements);
       if (!empty($elements)) {
         foreach ($elements as $element) {
@@ -43,7 +43,7 @@
       return count($this->stack);
     }
 
-    private function normalized_array($elements = array()) {
+    private function normalized_array($elements = null) {
       if ($elements === null) {
         return array();
       } else if (is_array($elements)) {
@@ -52,7 +52,7 @@
       return array($elements);
     }
 
-    private function normalized_element($elements = array()) {
+    private function normalized_element($elements = null) {
       if (empty($elements)) {
         return null;
       } else if (count($elements) == 1) {
