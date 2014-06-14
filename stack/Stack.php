@@ -14,6 +14,10 @@
     }
 
     public function pop($count = 1) {
+      if (!is_int($count)) {
+        throw new Exception('count must be an integer');
+      }
+
       $elements = array();
       for ($i = 0; $i < $count && !empty($this->stack); $i++) {
         $elements[] = array_pop($this->stack);
