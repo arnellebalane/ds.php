@@ -14,22 +14,31 @@
     }
 
     public function dequeue($count = 1) {
-      $elements = array();
-      for ($i = 0; $i < $count && !empty($this->queue); $i++) {
-        $elements[] = array_shift($this->queue);
+      if (is_int($count)) {
+        $elements = array();
+        for ($i = 0; $i < $count && !empty($this->queue); $i++) {
+          $elements[] = array_shift($this->queue);
+        }
+        return $this->normalized_element($elements);
       }
-      return $this->normalized_element($elements);
+      throw new Exception('count must be an integer');
     }
 
     public function first($count = 1) {
-      $elements = array_slice($this->queue, 0, $count);
-      return $this->normalized_element($elements);
+      if (is_int($count)) {
+        $elements = array_slice($this->queue, 0, $count);
+        return $this->normalized_element($elements);
+      }
+      throw new Exception('count must be an integer');
     }
 
     public function last($count = 1) {
-      $elements = array_reverse($this->queue);
-      $elements = array_slice($elements, 0, $count);
-      return $this->normalized_element($elements);
+      if (is_int($count)) {
+        $elements = array_reverse($this->queue);
+        $elements = array_slice($elements, 0, $count);
+        return $this->normalized_element($elements);
+      }
+      throw new Exception('count must be an integer');
     }
 
     public function elements() {
