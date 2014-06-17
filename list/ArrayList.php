@@ -30,19 +30,25 @@
     }
 
     public function removeFirst($count = 1) {
-      $elements = array();
-      for ($i = 0; $i < $count && !empty($this->list); $i++) {
-        $elements[] = array_shift($this->list);
+      if (is_int($count)) {
+        $elements = array();
+        for ($i = 0; $i < $count && !empty($this->list); $i++) {
+          $elements[] = array_shift($this->list);
+        }
+        return $this->normalized_element($elements);
       }
-      return $this->normalized_element($elements);
+      throw new Exception('count must be an integer');
     }
 
     public function removeLast($count = 1) {
-      $elements = array();
-      for ($i = 0; $i < $count && !empty($this->list); $i++) {
-        $elements[] = array_pop($this->list);
+      if (is_int($count)) {
+        $elements = array();
+        for ($i = 0; $i < $count && !empty($this->list); $i++) {
+          $elements[] = array_pop($this->list);
+        }
+        return $this->normalized_element($elements);
       }
-      return $this->normalized_element($elements);
+      throw new Exception('count must be an integer');
     }
 
     public function removeAt($index = null) {
@@ -57,14 +63,20 @@
     }
 
     public function getFirst($count = 1) {
-      $elements = array_slice($this->list, 0, $count);
-      return $this->normalized_element($elements);
+      if (is_int($count)) {
+        $elements = array_slice($this->list, 0, $count);
+        return $this->normalized_element($elements);
+      }
+      throw new Exception('count must be an integer');
     }
 
     public function getLast($count = 1) {
-      $elements = array_reverse($this->list);
-      $elements = array_slice($elements, 0, $count);
-      return $this->normalized_element($elements);
+      if (is_int($count)) {
+        $elements = array_reverse($this->list);
+        $elements = array_slice($elements, 0, $count);
+        return $this->normalized_element($elements);
+      }
+      throw new Exception('count must be an integer');
     }
 
     public function getAt($index = null) {
